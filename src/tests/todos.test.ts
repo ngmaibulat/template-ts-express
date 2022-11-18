@@ -11,6 +11,8 @@ afterAll(async () => {
     await db.destroy();
 });
 
+let id = 0;
+
 test("post /todo", async () => {
     // const response = await request(app).get("/todo");
     const response = await req.post("/todo").send({
@@ -23,11 +25,12 @@ test("post /todo", async () => {
     expect(response.status).toBe(200);
     expect(response.ok).toBe(true);
     expect(response.redirect).toBe(false);
+    id = parseInt(response.body[0]);
 });
 
-test("get /todo/1", async () => {
+test(`get /todo/1`, async () => {
     // const response = await request(app).get("/todo");
-    const response = await req.get("/todo/1");
+    const response = await req.get(`/todo/${id}`);
 
     expect(response.type).toBe("application/json");
     expect(response.charset).toBe("utf-8");
@@ -59,7 +62,7 @@ test("get /todo", async () => {
 
 test("put /todo/1", async () => {
     // const response = await request(app).get("/todo");
-    const response = await req.put("/todo/1").send({
+    const response = await req.put(`/todo/${id}`).send({
         name: "Write unit tests by using jest",
         done: true,
     });
@@ -72,7 +75,7 @@ test("put /todo/1", async () => {
 });
 
 test("delete /todo/1", async () => {
-    const response = await req.delete("/todo/1");
+    const response = await req.delete(`/todo/${id}`);
 
     expect(response.type).toBe("application/json");
     expect(response.charset).toBe("utf-8");
