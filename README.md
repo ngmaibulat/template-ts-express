@@ -1,0 +1,20 @@
+-   .knex for database access
+-   .knex migrations for creating schema
+-   env file for settings
+-   handling exceptions at Controller level to make app robust
+-   data validation via yup
+-   Dockerfile to make build a docker container
+-   husky to run eslint, tests
+-   jest to run unit tests, API tests
+-   Github Actions workflow to deploy the app
+-   Deployment docs/samples
+-   Log to SIEM/LogStash: requests, errors
+-   handle errors, like 404
+-   CORS middleware, CORS settings via .env
+-   .nodemon for easier development
+-   static middleware for pubic files
+-   EditorConfig, Prettier, ESLint
+-   compile via esbuild; bundle via rollup
+-   npm run utils: create/run migration; create feature (route, controller, data fn); list routes;
+-   sample clients: .rest, curl
+-   generate OpenAPI json?
